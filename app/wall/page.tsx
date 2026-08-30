@@ -1,18 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Dock from "@/components/Dock";
 import { SendIcon } from "@/components/Icons";
 
-interface GuestbookEntry {
+interface WallEntry {
   id: string;
   name: string;
   message: string;
   date: string;
 }
 
-const initialEntries: GuestbookEntry[] = [
+const initialEntries: WallEntry[] = [
   {
     id: "1",
     name: "Ayush Mishra",
@@ -39,15 +38,15 @@ const initialEntries: GuestbookEntry[] = [
   },
 ];
 
-export default function GuestbookPage() {
-  const [entries, setEntries] = useState<GuestbookEntry[]>(initialEntries);
+export default function CommunityWallPage() {
+  const [entries, setEntries] = useState<WallEntry[]>(initialEntries);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("sriram_guestbook_entries");
+      const saved = localStorage.getItem("sriram_wall_entries");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -55,7 +54,7 @@ export default function GuestbookPage() {
         }
       }
     } catch {
-      // Fallback to initial
+      // Fallback
     }
   }, []);
 
@@ -65,7 +64,7 @@ export default function GuestbookPage() {
 
     setIsSubmitting(true);
 
-    const newEntry: GuestbookEntry = {
+    const newEntry: WallEntry = {
       id: Date.now().toString(),
       name: name.trim(),
       message: message.trim(),
@@ -76,9 +75,9 @@ export default function GuestbookPage() {
     setEntries(updated);
 
     try {
-      localStorage.setItem("sriram_guestbook_entries", JSON.stringify(updated));
+      localStorage.setItem("sriram_wall_entries", JSON.stringify(updated));
     } catch {
-      // Ignore storage errors
+      // Ignore
     }
 
     setName("");
@@ -92,13 +91,13 @@ export default function GuestbookPage() {
         {/* Header */}
         <div className="text-center space-y-3">
           <div className="inline-block rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-300">
-            Guestbook
+            Community Wall
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Sign My Guestbook
+            Leave a Note on the Wall
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 max-w-md mx-auto leading-relaxed">
-            Leave a message, share your thoughts, or just say hello! Leave your mark in the guestbook below.
+            Drop a note, share your thoughts, or just say hello! Anyone can leave a message below.
           </p>
         </div>
 
@@ -124,7 +123,7 @@ export default function GuestbookPage() {
 
           <div className="space-y-1">
             <label htmlFor="message" className="text-xs font-medium text-zinc-400">
-              Your Message
+              Your Note
             </label>
             <textarea
               id="message"
@@ -144,7 +143,7 @@ export default function GuestbookPage() {
               className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-black transition hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <SendIcon className="size-3.5" />
-              Sign Guestbook
+              Post Note
             </button>
           </div>
         </form>
@@ -152,7 +151,7 @@ export default function GuestbookPage() {
         {/* Entries List */}
         <div className="space-y-4">
           <div className="text-xs font-medium text-zinc-500">
-            {entries.length} {entries.length === 1 ? "entry" : "entries"}
+            {entries.length} {entries.length === 1 ? "note" : "notes"}
           </div>
 
           <div className="space-y-4 divide-y divide-zinc-900">

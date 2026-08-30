@@ -92,7 +92,7 @@ const navItems = [
   { label: "About", href: "/#about", icon: UserIcon },
   { label: "Skills", href: "/#skills", icon: CodeIcon },
   { label: "Projects", href: "/#projects", icon: FolderIcon },
-  { label: "Guestbook", href: "/guestbook", icon: BookOpenIcon },
+  { label: "Community", href: "/wall", icon: BookOpenIcon },
 ];
 
 const socialItems = [
