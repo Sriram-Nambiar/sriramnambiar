@@ -5,12 +5,12 @@ import { GitHubCalendar } from "react-github-calendar";
 export default function GithubContributions() {
   return (
     <section id="contributions" className="space-y-3">
-      <div className="w-full overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
-        <div className="min-w-[650px] flex justify-center">
+      <div className="w-full no-scrollbar overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+        <div className="w-fit mx-auto">
           <GitHubCalendar
             username="Sriram-Nambiar"
             colorScheme="dark"
-            blockSize={11}
+            blockSize={10}
             blockMargin={3}
             fontSize={12}
             theme={{
