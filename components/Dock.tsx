@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import {
   HomeIcon,
   UserIcon,
   FolderIcon,
   CodeIcon,
+  BookOpenIcon,
   GithubIcon,
   MailIcon,
 } from "./Icons";
@@ -44,6 +46,23 @@ function DockItem({
     }
   }
 
+  const linkProps = {
+    ref,
+    href,
+    target: external ? "_blank" : undefined,
+    rel: external ? "noopener noreferrer" : undefined,
+    "aria-label": label,
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+    style: {
+      transform: `scale(${scale}) translateY(${translateY}px)`,
+      transition: "transform 0.12s cubic-bezier(0.2, 0, 0, 1)",
+      transformOrigin: "bottom center",
+    },
+    className:
+      "flex items-center justify-center rounded-full p-2 text-zinc-400 hover:bg-zinc-800/80 hover:text-white",
+  };
+
   return (
     <div className="relative flex items-center justify-center">
       {isHovered && (
@@ -55,32 +74,25 @@ function DockItem({
         </span>
       )}
 
-      <a
-        ref={ref}
-        href={href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        aria-label={label}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        style={{
-          transform: `scale(${scale}) translateY(${translateY}px)`,
-          transition: "transform 0.12s cubic-bezier(0.2, 0, 0, 1)",
-          transformOrigin: "bottom center",
-        }}
-        className="flex items-center justify-center rounded-full p-2 text-zinc-400 hover:bg-zinc-800/80 hover:text-white"
-      >
-        <Icon className="size-4 sm:size-4.5" />
-      </a>
+      {external ? (
+        <a {...linkProps}>
+          <Icon className="size-4 sm:size-4.5" />
+        </a>
+      ) : (
+        <Link {...linkProps}>
+          <Icon className="size-4 sm:size-4.5" />
+        </Link>
+      )}
     </div>
   );
 }
 
 const navItems = [
-  { label: "Home", href: "#hero", icon: HomeIcon },
-  { label: "About", href: "#about", icon: UserIcon },
-  { label: "Skills", href: "#skills", icon: CodeIcon },
-  { label: "Projects", href: "#projects", icon: FolderIcon },
+  { label: "Home", href: "/", icon: HomeIcon },
+  { label: "About", href: "/#about", icon: UserIcon },
+  { label: "Skills", href: "/#skills", icon: CodeIcon },
+  { label: "Projects", href: "/#projects", icon: FolderIcon },
+  { label: "Guestbook", href: "/guestbook", icon: BookOpenIcon },
 ];
 
 const socialItems = [
