@@ -1,10 +1,10 @@
-# Sriram Nambiar — Portfolio
+# Sriram Nambiar  Portfolio
 
 Personal developer portfolio showcasing full-stack projects, systems engineering, and open-source contributions.
 
 ---
 
-## ⚡ Tech Stack
+## Tech Stack
 
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
@@ -14,6 +14,6 @@ Personal developer portfolio showcasing full-stack projects, systems engineering
 
 ---
 
-## 👤 Author
+##  Dev
 
 - **GitHub:** [@Sriram-Nambiar](https://github.com/Sriram-Nambiar)
