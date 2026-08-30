@@ -89,9 +89,9 @@ function DockItem({
 
 const navItems = [
   { label: "Home", href: "/", icon: HomeIcon },
+  { label: "Projects", href: "/#projects", icon: FolderIcon },
   { label: "About", href: "/#about", icon: UserIcon },
   { label: "Skills", href: "/#skills", icon: CodeIcon },
-  { label: "Projects", href: "/#projects", icon: FolderIcon },
   { label: "Community", href: "/wall", icon: BookOpenIcon },
 ];
 
