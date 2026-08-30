@@ -26,6 +26,7 @@ function DockItem({
   mouseX,
 }: DockItemProps) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   let scale = 1;
   let translateY = 0;
@@ -44,22 +45,34 @@ function DockItem({
   }
 
   return (
-    <a
-      ref={ref}
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      aria-label={label}
-      title={label}
-      style={{
-        transform: `scale(${scale}) translateY(${translateY}px)`,
-        transition: "transform 0.12s cubic-bezier(0.2, 0, 0, 1)",
-        transformOrigin: "bottom center",
-      }}
-      className="flex items-center justify-center rounded-full p-2 text-zinc-400 hover:bg-zinc-800/80 hover:text-white"
-    >
-      <Icon className="size-4 sm:size-4.5" />
-    </a>
+    <div className="relative flex items-center justify-center">
+      {isHovered && (
+        <span
+          role="tooltip"
+          className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-md border border-zinc-800 bg-zinc-900/95 px-2 py-0.5 text-[11px] font-medium text-white shadow-lg backdrop-blur-sm whitespace-nowrap"
+        >
+          {label}
+        </span>
+      )}
+
+      <a
+        ref={ref}
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        aria-label={label}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          transform: `scale(${scale}) translateY(${translateY}px)`,
+          transition: "transform 0.12s cubic-bezier(0.2, 0, 0, 1)",
+          transformOrigin: "bottom center",
+        }}
+        className="flex items-center justify-center rounded-full p-2 text-zinc-400 hover:bg-zinc-800/80 hover:text-white"
+      >
+        <Icon className="size-4 sm:size-4.5" />
+      </a>
+    </div>
   );
 }
 
