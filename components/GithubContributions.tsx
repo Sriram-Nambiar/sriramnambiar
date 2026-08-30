@@ -5,6 +5,15 @@ import { GitHubCalendar } from "react-github-calendar";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
+function formatDateDDMMYYYY(dateStr: string): string {
+  const parts = dateStr.split("-");
+  if (parts.length === 3) {
+    const [year, month, day] = parts;
+    return `${day}/${month}/${year}`;
+  }
+  return dateStr;
+}
+
 export default function GithubContributions() {
   const [mounted, setMounted] = useState(false);
   const currentYear = new Date().getFullYear();
@@ -34,7 +43,7 @@ export default function GithubContributions() {
                     "data-tooltip-id": "github-tooltip",
                     "data-tooltip-content": `${activity.count} contribution${
                       activity.count === 1 ? "" : "s"
-                    } on ${activity.date}`,
+                    } on ${formatDateDDMMYYYY(activity.date)}`,
                   })
                 }
                 theme={{
