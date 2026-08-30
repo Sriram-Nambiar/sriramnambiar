@@ -90,9 +90,9 @@ function DockItem({
 
 const navItems = [
   { label: "Home", href: "/", icon: HomeIcon },
+  { label: "About", href: "/#about", icon: UserIcon },
   { label: "Projects", href: "/#projects", icon: FolderIcon },
   { label: "Experience", href: "/#experience", icon: BriefcaseIcon },
-  { label: "About", href: "/#about", icon: UserIcon },
   { label: "Skills", href: "/#skills", icon: CodeIcon },
   { label: "Community", href: "/wall", icon: BookOpenIcon },
 ];
