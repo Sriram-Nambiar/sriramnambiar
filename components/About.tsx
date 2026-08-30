@@ -12,11 +12,10 @@ export default function About() {
         >
           full-stack developer
         </a>{" "}
-        passionate about crafting fast web applications, developer tooling, and systems programming. I taught myself to code to bring ideas to life, and now I spend most of my time building with{" "}
+        passionate about building fast web applications, developer tooling, and systems programming. I taught myself to code to bring ideas to life, and now I spend most of my time building with{" "}
         <span className="font-medium text-zinc-200">Next.js</span>,{" "}
         <span className="font-medium text-zinc-200">TypeScript</span>, and{" "}
-        <span className="font-medium text-zinc-200">Node.js</span>. Currently, I evaluate LLM reasoning and terminal environments at{" "}
-        <span className="font-medium text-zinc-200">Handshake AI</span>, rebuild core protocols from scratch, and design tools that elevate developer workflows. Outside of building products, I enjoy solving algorithmic problems, diving into system design, and exploring open-source software.
+        <span className="font-medium text-zinc-200">Node.js</span>. Outside of building products, I enjoy solving algorithmic problems, diving into system design, and exploring open-source software.
       </p>
     </section>
   );
