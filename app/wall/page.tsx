@@ -11,50 +11,26 @@ interface WallEntry {
   date: string;
 }
 
-const initialEntries: WallEntry[] = [
-  {
-    id: "1",
-    name: "Ayush Mishra",
-    message: "Fabulous work! Really clean UI, looking forward to collaborating someday 🚀",
-    date: "2 months ago",
-  },
-  {
-    id: "2",
-    name: "DevCommunity",
-    message: "Love the minimal dark aesthetic and the systems projects. Keep building!",
-    date: "4 months ago",
-  },
-  {
-    id: "3",
-    name: "Sneha Patel",
-    message: "Awesome portfolio Sriram! Very clean typography and smooth dock animations.",
-    date: "5 months ago",
-  },
-  {
-    id: "4",
-    name: "Arjun V.",
-    message: "Great work Sriram! Awesome to see another builder shipping cool stuff ⚡",
-    date: "6 months ago",
-  },
-];
-
 export default function CommunityWallPage() {
-  const [entries, setEntries] = useState<WallEntry[]>(initialEntries);
+  const [entries, setEntries] = useState<WallEntry[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem("sriram_wall_entries");
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           setEntries(parsed);
         }
       }
     } catch {
-      // Fallback
+      // Ignore
+    } finally {
+      setHasLoaded(true);
     }
   }, []);
 
@@ -64,11 +40,16 @@ export default function CommunityWallPage() {
 
     setIsSubmitting(true);
 
+    const now = new Date();
+    const formattedDate = `${String(now.getDate()).padStart(2, "0")}/${String(
+      now.getMonth() + 1
+    ).padStart(2, "0")}/${now.getFullYear()}`;
+
     const newEntry: WallEntry = {
       id: Date.now().toString(),
       name: name.trim(),
       message: message.trim(),
-      date: "Just now",
+      date: formattedDate,
     };
 
     const updated = [newEntry, ...entries];
@@ -154,23 +135,29 @@ export default function CommunityWallPage() {
             {entries.length} {entries.length === 1 ? "note" : "notes"}
           </div>
 
-          <div className="space-y-4 divide-y divide-zinc-900">
-            {entries.map((entry) => (
-              <div key={entry.id} className="pt-4 first:pt-0 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-white">
-                    {entry.name}
-                  </span>
-                  <span className="text-xs text-zinc-500 tabular-nums">
-                    {entry.date}
-                  </span>
+          {entries.length > 0 ? (
+            <div className="space-y-4 divide-y divide-zinc-900">
+              {entries.map((entry) => (
+                <div key={entry.id} className="pt-4 first:pt-0 space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-semibold text-white">
+                      {entry.name}
+                    </span>
+                    <span className="text-xs text-zinc-500 tabular-nums">
+                      {entry.date}
+                    </span>
+                  </div>
+                  <p className="text-sm text-zinc-300 leading-relaxed text-pretty">
+                    {entry.message}
+                  </p>
                 </div>
-                <p className="text-sm text-zinc-300 leading-relaxed text-pretty">
-                  {entry.message}
-                </p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : hasLoaded ? (
+            <div className="rounded-xl border border-dashed border-zinc-800 p-8 text-center text-sm text-zinc-500">
+              No notes on the wall yet. Be the first to leave one!
+            </div>
+          ) : null}
         </div>
       </div>
 
