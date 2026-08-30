@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
 import About from "@/components/About";
 import GithubContributions from "@/components/GithubContributions";
 import Skills from "@/components/Skills";
@@ -11,6 +12,7 @@ export default function Home() {
       <div className="w-full max-w-2xl mx-auto space-y-12 pb-20">
         <Hero />
         <Projects />
+        <Experience />
         <About />
         <GithubContributions />
         <Skills />
