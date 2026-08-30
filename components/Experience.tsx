@@ -28,8 +28,11 @@ export default function Experience() {
             key={exp.company}
             className="flex items-start gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all hover:border-zinc-700 hover:bg-zinc-900/70"
           >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950 font-bold text-white shadow-inner">
-              H
+            {/* Handshake Lime Green Logo */}
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#d2f836] shadow-sm select-none">
+              <span className="font-black italic text-lg text-black tracking-tighter">
+                H
+              </span>
             </div>
 
             <div className="flex-1 space-y-2">
