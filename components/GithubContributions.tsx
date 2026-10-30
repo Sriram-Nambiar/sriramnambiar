@@ -23,7 +23,7 @@ export default function GithubContributions() {
   }, []);
 
   return (
-    <section id="contributions" className="space-y-3">
+    <section id="contributions" className="space-y-2">
       <div className="w-full no-scrollbar overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
         <div className="w-fit mx-auto min-h-[135px] flex items-center justify-center">
           {mounted ? (
