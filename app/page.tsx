@@ -8,13 +8,14 @@ import Dock from "@/components/Dock";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white px-4 py-16 sm:py-20 selection:bg-zinc-800 selection:text-white">
-      <div className="w-full max-w-2xl mx-auto space-y-12 pb-20">
+    <main className="min-h-screen bg-black text-white px-4 py-16 sm:py-10 selection:bg-zinc-800 selection:text-white">
+      <div className="w-full max-w-2xl mx-auto space-y-10 pb-15">
         <Hero />
         <About />
-        <GithubContributions />
-        <Projects />
+        
         <Experience />
+        <Projects />
+        <GithubContributions />
         <Skills />
       </div>
       <Dock />
