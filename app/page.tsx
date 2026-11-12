@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Dock from "@/components/Dock";
+import RandomAni from "@/components/RandomAni";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <div className="w-full max-w-2xl mx-auto space-y-10 pb-15">
         <Hero />
         <About />
-        
+        <RandomAni/>
         <Experience />
         <Projects />
         <GithubContributions />
