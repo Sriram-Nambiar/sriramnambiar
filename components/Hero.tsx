@@ -8,7 +8,7 @@ export default function Hero() {
           Hi, I&apos;m Sriram.
         </h1>
         <p className="text-base sm:text-lg text-zinc-400 max-w-lg leading-relaxed">
-          Full-stack developer building modern web applications, developer tools, and scalable systems.
+          Open-source contributor building modern web applications, developer tools, and scalable systems.
         </p>
       </div>
 
